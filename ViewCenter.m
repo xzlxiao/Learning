@@ -1,6 +1,6 @@
 classdef ViewCenter < ViewBase
     % 功能：创建一个位于屏幕中央的窗口
-    % 接口：newsize是中央向左下便宜的坐标
+    % 接口：newsize是中央向左下偏移的坐标
     % 作者：肖镇龙
     properties(Dependent)
         ScreenSize

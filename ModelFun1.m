@@ -1,4 +1,5 @@
 classdef ModelFun1 < handle
+    % 数据操作模型对象
     properties
         pictureR
     end
@@ -11,7 +12,7 @@ classdef ModelFun1 < handle
         end
         function picChange(obj)
             obj.pictureR = im2uint8(rand([100, 100]));
-            notify('picChanged');
+            obj.notify('picChanged');   % 事件同步通知
         end
     end
 end
