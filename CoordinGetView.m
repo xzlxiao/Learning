@@ -8,7 +8,7 @@ classdef CoordinGetView < ViewCenter
         % 坐标显示
         CoorDisp;
         % 按钮
-        uipanelButton;
+        uitoolbarTop;
         btnInput;
         btnDrawRect;
         btnReturn;
@@ -21,18 +21,29 @@ classdef CoordinGetView < ViewCenter
     properties
         % 控件属性设置
         viewtitle;
+        CDataInput;
+        CDataRect;
+        CDataReturn;
     end
     methods
         function obj = CoordinGetView()
             obj = obj@ViewCenter([500, 400]);
-            set(obj.hfig, 'color','menubar', 'none','toolbar', 'none' , [1,1,1]);
-            
+            set(obj.hfig, 'color', [1,1,1],'menubar', 'none','toolbar', 'none', 'name', '坐标获取', 'resize', 'on' );
+            obj.UIbuild;
         end
         function UIbuild(obj)
-            obj.uipanelAxes = uipanel('parent' , a, 'units', 'normal', 'pos', [0, 0.1, 1, 0.9]);
-            obj.axesPic = axes('parent', b, 'pos', [0.001, 0.001, 0.998, 0.998], 'xTick' , [], 'yTick', [], 'xColor', [1 1 1], 'ycolor', [1 1 1],'visible', 'off');
-            obj.sliderPic = uicontrol('parent', a, 'style', 'slider', 'units', 'normal', 'pos', [0, 0.08, 1, 0.02]);
+            obj.uipanelAxes = uipanel(obj.hfig, 'units', 'normal', 'pos', [0, 0.1, 1, 0.9]);
+            obj.axesPic = axes('parent', obj.uipanelAxes, 'pos', [0.001, 0.001, 0.998, 0.998], 'xTick' , [], 'yTick', [], 'xColor', [1 1 1], 'ycolor', [1 1 1],'visible', 'off');
+            obj.sliderPic = uicontrol(obj.hfig, 'style', 'slider', 'units', 'normal', 'pos', [0, 0.08, 1, 0.02]);
             obj.CoorDisp = annotation('textbox', [0.1, 0.01, 0.1, 0.05],'edgecolor', [1,1,1]);    % string信息需要加入model中
+            obj.uitoolbarTop = uitoolbar(obj.hfig);
+            obj.CDataInput = imresize(imread('icons\Open.png'), [16, 16]);
+            obj.btnInput = uipushtool(obj.uitoolbarTop, 'cdata', obj.CDataInput, 'tooltipstring', '输入图片');  % 回调函数属性为'clickedcallback'
+            obj.CDataRect = imresize(imread('icons\Rect.png'), [16, 16]);
+            obj.btnDrawRect = uipushtool(obj.uitoolbarTop, 'cdata', obj.CDataRect, 'tooltipstring', '坐标框');
+            obj.CDataReturn = imresize(imread('icons\return3.png'), [16, 16]);
+            obj.CDataReturn = cat(3, obj.CDataReturn, obj.CDataReturn, obj.CDataReturn);
+            obj.btnReturn = uipushtool(obj.uitoolbarTop, 'cdata', obj.CDataReturn, 'tooltipstring', '返回');
         end
     end
 end
