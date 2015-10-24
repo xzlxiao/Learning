@@ -50,11 +50,18 @@ classdef CoordinGetView < ViewCenter
             obj.btnReturn = uipushtool(obj.uitoolbarTop, 'cdata', obj.CDataReturn, 'tooltipstring', '·µ»Ø');
         end
         function CoordinationUpdate(obj, event, data)
-            set(obj.hfig, 'name', mat2str(obj.Model.Coordination));
+            set(obj.hfig, 'name', mat2str(fix(obj.Model.Coordination)));
         end
         function CurPicUpdate(obj, event, data)
             axes(obj.axesPic);
             imshow(obj.Model.stack{obj.Model.CurNum});
+            if obj.Model.picRecCreated == 1
+                obj.Model.picRec = imrect(obj.axesPic, obj.Model.lastRectPos);
+                cb = obj.Model;
+                addNewPositionCallback(obj.Model.picRec, @cb.resizeRect);
+                fcn = makeConstrainToRectFcn('imrect',get(obj.axesPic,'XLim'),get(obj.axesPic,'YLim'));
+                setPositionConstraintFcn(obj.Model.picRec,fcn);
+            end
         end
         function MakeController(obj)
             obj.Controller = CoordinGetController(obj, obj.Model);

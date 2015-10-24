@@ -26,6 +26,7 @@ classdef CoordinGetController < handle
             obj.Model.picRead(obj.View.sliderPic);
         end
         function btnDrawRect_callback(obj, event, data)
+            axes(obj.View.axesPic);
             obj.Model.picRect(obj.View.axesPic);
         end
         function btnReturn_callback(obj, event, data)

@@ -10,10 +10,15 @@ classdef CoordinGetModel < handle
         CurNum; %当前图片的序号
         returncode = [0, 0, 0, 0];
     end
-    properties(Hidden, SetAccess = protected)
+    properties(Hidden)
         % 对象
         picread;  % 图片读取对象
         picRec;   % imrect对象
+    end
+    properties(Hidden)
+        % 临时属性
+        picRecCreated = 0;
+        lastRectPos;
     end
     properties(Dependent)
         Coordination;  % 坐标
@@ -43,9 +48,10 @@ classdef CoordinGetModel < handle
         end
         function picRect(obj, axes_handle)
             % 坐标框创建函数
-            % (待实现）需要添加imrect的限制区域，再次按下按钮时，清除上一个imrect
+            imshow(obj.stack{obj.CurNum})
             obj.picRec = imrect(axes_handle);
-            addNewPositionCallback(obj.picRec, @obj.resizeRect);
+            obj.picRecCreated = 1;
+            addNewPositionCallback(obj.picRec, @obj.resizeRect);    % 设置拖动方框时的回调函数
             fcn = makeConstrainToRectFcn('imrect',get(axes_handle,'XLim'),get(axes_handle,'YLim'));
             setPositionConstraintFcn(obj.picRec,fcn);
             obj.notify('CoorChange');
@@ -53,8 +59,8 @@ classdef CoordinGetModel < handle
         function Coordination = get.Coordination(obj)
             Coordination = getPosition(obj.picRec);
         end
-        function resizeRect(obj)
-            % (待实现）坐标框修正函数
+        function resizeRect(obj, event, data)
+            % 坐标框修正函数
             obj.notify('CoorChange');
         end
         function Coordi = Retur(obj)
@@ -70,11 +76,17 @@ classdef CoordinGetModel < handle
                 obj.CurNum = obj.CurNum - 1;
                 set(scroll_handle, 'value', obj.CurNum);
             end
+            if obj.picRecCreated == 1
+                obj.lastRectPos = obj.Coordination;
+            end
             obj.notify('CurNumChange');
         end
         function SliderFcn(obj, scroll_handle)
             % slider的函数
             obj.CurNum = round(get(scroll_handle, 'value'));
+            if obj.picRecCreated == 1
+                obj.lastRectPos = obj.Coordination;
+            end
             obj.notify('CurNumChange');
         end
     end
