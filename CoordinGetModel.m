@@ -63,9 +63,9 @@ classdef CoordinGetModel < handle
             % 坐标框修正函数
             obj.notify('CoorChange');
         end
-        function Coordi = Retur(obj)
+        function Retur(obj)
             %返回函数
-            Coordi = obj.Coordination;
+            obj.returncode = obj.Coordination;
         end
         function ScrollWheel(obj, scroll_handle, data)
             %滚轮函数
