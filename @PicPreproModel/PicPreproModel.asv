@@ -188,13 +188,14 @@ classdef PicPreproModel < handle
             end
         end
         function getCoordination()
-            % 调用坐标获取GUI
-            
+            % 调用 
             
         end
-        function MkThumbnail(obj)
-            thumbNail = thumbnail;
-            thumbNail.write;
+        function MkThumbnail()
+            
+        end
+        function CropInfo()
+            
         end
     end
 end

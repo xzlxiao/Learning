@@ -1,0 +1,5 @@
+27-Oct-2015 
+[1]MBA-GI13444_XXXXX_Crop CropCoordinate X：14 Y：14 CropWidth：14 CropHeight：14 ZRange：5001 -5010 备注信息：111 
+27-Oct-2015 
+[1]MBA-GI13444_XXXXX_Crop CropCoordinate X：14 Y：14 CropWidth：14 CropHeight：14 ZRange：5001 -5010 备注信息：111 
+[2]MBA-GI13444_XXXXX_Crop CropCoordinate X：13 Y：13 CropWidth：13 CropHeight：13 ZRange：5001 -5010 备注信息：111 

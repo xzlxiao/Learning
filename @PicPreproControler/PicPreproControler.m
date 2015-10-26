@@ -12,16 +12,16 @@ classdef PicPreproControler < handle
             obj.model.add(obj.view);
         end
         function ButtonRun_callback(obj, event, data)
-            obj.model.Run;
+            obj.model.Run(obj.view);
         end
         function ButtonInput_callback(obj, event, data)
-            obj.model.Input;
+            obj.model.Input(obj.view);
         end
         function ButtonOutput_callback(obj, event, data)
-            obj.model.Output;
+            obj.model.Output(obj.view);
         end
         function ButtonDel_callback(obj, event, data)
-            obj.model.DeleteInfo;
+            obj.model.DeleteInfo(obj.view);
         end
         function buttonInfo_callback(obj, event, data)
             obj.model.Information;
@@ -30,7 +30,7 @@ classdef PicPreproControler < handle
             obj.model.Invert;
         end
         function buttonRun2_callback(obj, event, data)
-            obj.model.Run2;
+            obj.model.Run2(obj.view);
         end
         function ButtonPrj_callback(obj, event, data)
             obj.model.ImProject;

@@ -1,0 +1,61 @@
+%% 组件列表
+%   软件功能：图片裁剪
+%   软件说明：GUI设计，输入参数为图片输入路径（输入路径选择任意需要裁剪的图片文件，将自动获取路径和文件名信息
+%   、图片输出路径、文件名前缀、文件名后缀（图片数字需要后，“.JPG”之前的部分），
+%   图片裁剪区域左上角坐标X、Y，裁剪的宽度和高度：W、H，这四个参数由imageJ获取，
+%   需裁剪图片的起始序号和终止序号，备注信息
+%   填写裁剪区域所在脑区，如海马CA1区。
+%   参数填写完毕后，点击添加，会在列表框生成一条裁剪信息，
+%   点击运行按钮会根据添加的裁剪信息进行图片裁剪
+%   投影需要根据图片背景选择黑色或浅色，用以决定是min投影还是max投影，该功能会在原图片路径下生成prj文件夹，
+%   用以储存生成的结果
+
+
+已过期
+% 坐标获取
+editX
+editY
+editW
+editH
+editZ1
+editZ2
+
+% 路径获取
+editInput
+editOutput
+ButtonViewin
+ButtonViewout
+
+% 后缀状态控制
+uipanelsuffix
+suffixN
+suffixY
+
+% 信息显示
+CropInfoBox
+
+% 运行控制
+ButtonAdd
+ButtonRun
+ButtonDel
+buttonRun2
+
+%% 变量列表
+img_inf[n]{'SrcDir','', ...
+    'DstDir','', ...
+    'CropHeight',0, ...
+    'CropWidth', 0, ...
+    'CropWidthFirstPointCoordinate', 0, ...
+    'CropHeightFirstPointCoordinate',0, ...
+    'Zstart', 0, ...
+    'Zend', 0}
+SrcDir
+DstDir
+CropHeight
+CropWidth
+CropWidthFirstPointCoordinate
+CropHeightFirstPointCoordinate
+
+%% 功能说明
+ButtonDel
+删除CropInfoBox当前选中信息、
