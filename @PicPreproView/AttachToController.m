@@ -5,13 +5,13 @@ function AttachToController(obj, controler)
     cbF = @controler.ButtonRun_callback;
     set(obj.ButtonRun, 'callback', cbF);
     cbF = @controler.ButtonInput_callback;
-    set(obj.ButtonInputm, 'callback', cbF);
+    set(obj.ButtonInput, 'callback', cbF);
     cbF = @controler.ButtonOutput_callback;
     set(obj.ButtonOutput, 'callback', cbF);
     cbF = @controler.ButtonDel_callback;
     set(obj.ButtonDel, 'callback', cbF);
-    cbF = @controler.ButtonInfo_callback;
-    set(obj.ButtonInfo, 'callback', cbF);
+    cbF = @controler.buttonInfo_callback;
+    set(obj.buttonInfo, 'callback', cbF);
     cbF = @controler.buttonInvert_callback;
     set(obj.buttonInvert, 'callback', cbF);
     cbF = @controler.buttonRun2_callback;
@@ -24,3 +24,4 @@ function AttachToController(obj, controler)
     set(obj.buttonThumbnail, 'callback', cbF);
     cbF = @controler.CropInfoBox_callback;
     set(obj.CropInfoBox, 'callback', cbF);
+end
