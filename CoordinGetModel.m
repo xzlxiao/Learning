@@ -34,17 +34,19 @@ classdef CoordinGetModel < handle
             % 图片读取函数,
             % （待实现）如果横纵坐标大于某值时，生成缩略图；图片数量大于某值时，生成投影图
             obj.picread = uiread_picture;
-            pic_waitbar = waitbar(0, '图片读取中...');
-            steps = obj.picread.sizes;
-            for i = 1 : obj.picread.sizes
-                pic_tmp = imread(obj.picread.path_dir{1, i});
-                obj.stack{i} = pic_tmp;
-                waitbar(i/steps, pic_waitbar);
+            if obj.picread.state == 1
+                pic_waitbar = waitbar(0, '图片读取中...');
+                steps = obj.picread.sizes;
+                for i = 1 : obj.picread.sizes
+                    pic_tmp = imread(obj.picread.path_dir{1, i});
+                    obj.stack{i} = pic_tmp;
+                    waitbar(i/steps, pic_waitbar);
+                end
+                close(pic_waitbar);
+                obj.CurNum = 1;
+                set(scroll_handle, 'value', obj.CurNum, 'Min', 1, 'Max', obj.picread.sizes, 'SliderStep', [1/obj.picread.sizes, 1/obj.picread.sizes]);
+                obj.notify('CurNumChange');
             end
-            close(pic_waitbar);
-            obj.CurNum = 1;
-            set(scroll_handle, 'value', obj.CurNum, 'Min', 1, 'Max', obj.picread.sizes, 'SliderStep', [1/obj.picread.sizes, 1/obj.picread.sizes]);
-            obj.notify('CurNumChange');
         end
         function picRect(obj, axes_handle)
             % 坐标框创建函数
