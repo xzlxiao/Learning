@@ -46,7 +46,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine,
 	while(GetMessage(&msg, NULL, 0, 0))		// GetMessage 从消息队列获取信息
 	{
 		TranslateMessage(&msg);			// TranslateMessage 翻译一些键盘消息
-		DispatchMessage(&msg);			// DispatchMessage 将消息发送给
+		DispatchMessage(&msg);			// DispatchMessage 将消息发送给窗口过程
 	}
 	return msg.wParam;
 }
