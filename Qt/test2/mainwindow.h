@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void showChildDialog();
 };
 
 #endif // MAINWINDOW_H

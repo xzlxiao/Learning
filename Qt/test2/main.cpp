@@ -2,7 +2,10 @@
 #include <QApplication>
 #include <QLabel>
 #include <QString>
-
+#include <iostream>
+#include <QDebug>
+#include <QDialog>
+/*
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -26,4 +29,13 @@ int main(int argc, char *argv[])
     delete label;
     delete widget;
     return ret;
+}
+*/
+using namespace std;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
