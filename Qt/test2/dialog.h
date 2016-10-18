@@ -1,6 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
+#include <QApplication>
 #include <QDialog>
 
 namespace Ui {
@@ -14,6 +15,10 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
+
+private slots:
+    void on_pushButton_2_clicked();
+    void btn3_clicked();
 
 private:
     Ui::Dialog *ui;
