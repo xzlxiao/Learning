@@ -6,7 +6,7 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    connect(ui->btn3, SIGNAL(clicked()), this, SLOT(btn3_clicked()) )
+    connect(ui->btn3, SIGNAL(clicked()), this, SLOT(btn3_clicked()) );
 }
 
 Dialog::~Dialog()
@@ -21,5 +21,6 @@ void Dialog::on_pushButton_2_clicked()
 
 void Dialog::btn3_clicked()
 {
-    this->close();
+    QColor color = QColorDialog::getColor(Qt::white, this, QString("颜色对话框:"));
+    qDebug() << "color: " << color;
 }

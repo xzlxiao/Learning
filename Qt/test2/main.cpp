@@ -43,5 +43,6 @@ int main(int argc, char *argv[])
         w.show();
         return a.exec();
     }
+    QLabel *lb3 = new QLabel(dia1);
     else return 0;
 }

@@ -3,6 +3,8 @@
 
 #include <QApplication>
 #include <QDialog>
+#include <QColorDialog>
+#include <qdebug.h>
 
 namespace Ui {
 class Dialog;
