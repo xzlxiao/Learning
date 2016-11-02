@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMovie>
-#include <QPushButton>
 
 namespace Ui {
 class MainWindow;
@@ -19,12 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QPushButton *Button1;
-    int count;
+private slots:
+    void setText(const QString &string);
 
-public slots:
-    void showChildDialog();
-    void showMovie();
 };
 
 #endif // MAINWINDOW_H

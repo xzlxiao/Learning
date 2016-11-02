@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
 }
 */
 using namespace std;
+
+/*
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -43,6 +45,16 @@ int main(int argc, char *argv[])
         w.show();
         return a.exec();
     }
-    QLabel *lb3 = new QLabel(dia1);
     else return 0;
+}
+*/
+
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    a.exec();
+    return 0;
 }

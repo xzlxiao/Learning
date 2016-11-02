@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMovie>
-#include <QPushButton>
+#include <QTextEdit>
+#include <QMdiSubWindow>
 
 namespace Ui {
 class MainWindow;
@@ -17,14 +17,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_textEdit_selectionChanged();
+    void NewFile();
+
+    void on_actionNew_File_2_triggered();
+
 private:
     Ui::MainWindow *ui;
-    QPushButton *Button1;
-    int count;
-
-public slots:
-    void showChildDialog();
-    void showMovie();
 };
 
 #endif // MAINWINDOW_H
