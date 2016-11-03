@@ -1,11 +1,27 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTextFrame>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QTextDocument *document = ui->textEdit->document();
+    QTextFrame *rootFrame = document->rootFrame();
+    QTextFrameFormat format;
+    format.setBorderBrush(Qt::red);
+    format.setBorder(3);
+    rootFrame->setFrameFormat(format);
+
+    QTextFrameFormat frameFormat;
+    frameFormat.setBackground(Qt::lightGray);
+    frameFormat.setMargin(10);
+    frameFormat.setPadding(5);
+    frameFormat.setBorder(2);
+    frameFormat.setBorderStyle(QTextFrameFormat::BorderStyle_Dotted);
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.insertFrame(frameFormat);
 }
 
 MainWindow::~MainWindow()
@@ -20,10 +36,10 @@ void MainWindow::on_textEdit_selectionChanged()
 
 void MainWindow::NewFile()
 {
-    QTextEdit *edit = new QTextEdit(this);
-    QMdiSubWindow *child = ui->mdiArea->addSubWindow(edit);
-    child->setWindowTitle("testttt");
-    child->show();
+    //QTextEdit *edit = new QTextEdit(this);
+    //QMdiSubWindow *child = ui->mdiArea->addSubWindow(edit);
+    //child->setWindowTitle("testttt");
+    //child->show();
 }
 
 void MainWindow::on_actionNew_File_2_triggered()
