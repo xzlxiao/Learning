@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTextFrame>
-
+#include "test1.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
     frameFormat.setBorderStyle(QTextFrameFormat::BorderStyle_Dotted);
     QTextCursor cursor = ui->textEdit->textCursor();
     cursor.insertFrame(frameFormat);
+    this->MenuTest = ui->menuBar->addMenu(QString("测试"));
+    QAction *action1 = new QAction(QString("打开窗口"), this);
+    connect(action1, SIGNAL(triggered(bool)), this, SLOT(openNewWindow()));
+    MenuTest->addAction(action1);
 }
 
 MainWindow::~MainWindow()
@@ -45,4 +49,12 @@ void MainWindow::NewFile()
 void MainWindow::on_actionNew_File_2_triggered()
 {
 
+}
+
+void MainWindow::openNewWindow()
+{
+    qDebug() << "openNewWindow()" << endl;
+    test1 *test = new test1(0);
+    test->setAttribute(Qt::WA_ShowModal, true);
+    test->show();
 }

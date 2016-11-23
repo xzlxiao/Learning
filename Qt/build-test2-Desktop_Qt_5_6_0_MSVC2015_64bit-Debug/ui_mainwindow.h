@@ -81,6 +81,10 @@ public:
         pushButton_2 = new QPushButton(page_2);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(180, 110, 75, 23));
+        pushButton_2->setStyleSheet(QLatin1String("color: rgb(255, 0, 255);\n"
+"background-color: rgb(0, 255, 255);\n"
+"border-color: rgb(255, 255, 255);\n"
+""));
         stackedWidget->addWidget(page_2);
 
         verticalLayout->addWidget(stackedWidget);

@@ -25,7 +25,7 @@ class Ui_Dialog
 {
 public:
     QPushButton *btn3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_2;
     QPushButton *pushButton;
@@ -38,18 +38,19 @@ public:
         btn3 = new QPushButton(Dialog);
         btn3->setObjectName(QStringLiteral("btn3"));
         btn3->setGeometry(QRect(90, 250, 80, 20));
-        widget = new QWidget(Dialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(90, 200, 201, 22));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(Dialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(90, 200, 201, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(widget);
+        pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setStyleSheet(QStringLiteral("background-color: rgb(255, 0, 0);"));
 
         horizontalLayout->addWidget(pushButton_2);
 
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
         horizontalLayout->addWidget(pushButton);

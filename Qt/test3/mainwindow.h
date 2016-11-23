@@ -4,7 +4,10 @@
 #include <QMainWindow>
 #include <QTextEdit>
 #include <QMdiSubWindow>
+#include <QMenu>
 
+#include "test2.h"
+#include <qdebug.h>
 namespace Ui {
 class MainWindow;
 }
@@ -22,9 +25,11 @@ private slots:
     void NewFile();
 
     void on_actionNew_File_2_triggered();
+    void openNewWindow();
 
 private:
     Ui::MainWindow *ui;
+    QMenu *MenuTest;
 };
 
 #endif // MAINWINDOW_H
